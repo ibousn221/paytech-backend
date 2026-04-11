@@ -110,8 +110,23 @@ app.post('/create-payment-link', async (req, res) => {
 // ==========================
 // 🔐 IPN PAYTECH
 // ==========================
-app.post('/ipn', (req, res) => {
+app.post('/ipn', async (req, res) => {
     console.log("📩 IPN REÇU :", req.body);
+
+    try {
+        await axios.post("COLLE_URL_ZAPIER_ICI", {
+            ref_command: req.body.ref_command,
+            amount: req.body.item_price,
+            status: req.body.type_event,
+            phone: req.body.client_phone,
+            payment_method: req.body.payment_method
+        });
+
+        console.log("✅ Envoyé à Zapier");
+    } catch (error) {
+        console.log("❌ Erreur Zapier :", error.message);
+    }
+
     res.status(200).send('OK');
 });
 
