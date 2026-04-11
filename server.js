@@ -114,12 +114,10 @@ app.post('/ipn', async (req, res) => {
     console.log("📩 IPN REÇU :", req.body);
 
     try {
-        await axios.post("https://hooks.zapier.com/hooks/catch/27141384/u7gi84e/", {
-            ref_command: req.body.ref_command,
-            amount: req.body.item_price,
+        await axios.post("https://hooks.zapier.com/hooks/catch/XXXX/YYYY", {
+            order_name: req.body.ref_command,
             status: req.body.type_event,
-            phone: req.body.client_phone,
-            payment_method: req.body.payment_method
+            amount: req.body.item_price
         });
 
         console.log("✅ Envoyé à Zapier");
