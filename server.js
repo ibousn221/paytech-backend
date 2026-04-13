@@ -67,7 +67,7 @@ app.post('/create-payment-link', async (req, res) => {
             env: "prod",
             ipn_url: process.env.MYBACKENDURL + "/ipn",
             success_url: "https://zeistoreofficiel.com/pages/merci",
-            cancel_url: "https://zeistoreofficiel.com/cart"
+            cancel_url: "https://zeistoreofficiel.com/pages/paiement-refuse"
         };
 
         console.log("📦 PAYLOAD PAYTECH :", payload);
