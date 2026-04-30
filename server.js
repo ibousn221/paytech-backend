@@ -114,15 +114,15 @@ app.post('/ipn', async (req, res) => {
     console.log("📩 IPN REÇU :", req.body);
 
     try {
-        await axios.post("https://hooks.zapier.com/hooks/catch/27141384/u7gi84e/", {
+        await axios.post("https://n8n-pzof.onrender.com/webhook/paytech-ipn", {
             order_name: req.body.ref_command,
             status: req.body.type_event,
             amount: req.body.item_price
         });
 
-        console.log("✅ Envoyé à Zapier");
+        console.log("✅ Envoyé à n8n");
     } catch (error) {
-        console.log("❌ Erreur Zapier :", error.message);
+        console.log("❌ Erreur n8n :", error.message);
     }
 
     res.status(200).send('OK');
