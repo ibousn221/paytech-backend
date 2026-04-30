@@ -114,7 +114,7 @@ app.post('/ipn', async (req, res) => {
     console.log("📩 IPN REÇU :", req.body);
 
     try {
-        await axios.post("https://n8n-pzof.onrender.com/webhook/paytech-ipn", {
+        await axios.post("https://n8n-pzof.onrender.com/webhook-test/paytech-ipn", {
             order_name: req.body.ref_command,
             status: req.body.type_event,
             amount: req.body.item_price
